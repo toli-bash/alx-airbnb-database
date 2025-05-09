@@ -1,3 +1,42 @@
+Let's clearly define the relationships between the entities in the ProDev Backend (AirBnB) database based on the foreign key constraints you provided:
+
+* **User and Property:**
+    * **One-to-Many:** One `User` can host many `Property` listings. The `Property` table has a foreign key `host_id` that references the `user_id` in the `User` table.
+
+* **User and Booking:**
+    * **One-to-Many:** One `User` can make many `Booking` records. The `Booking` table has a foreign key `user_id` that references the `user_id` in the `User` table.
+
+* **Property and Booking:**
+    * **One-to-Many:** One `Property` can have many `Booking` records. The `Booking` table has a foreign key `property_id` that references the `property_id` in the `Property` table.
+
+* **Booking and Payment:**
+    * **One-to-One or One-to-Many (Typically One-to-One):** One `Booking` can have one `Payment` record (in most standard scenarios). The `Payment` table has a foreign key `booking_id` that references the `booking_id` in the `Booking` table. While technically a booking could have multiple payments (e.g., for modifications), in a basic setup, it's often a one-to-one relationship.
+
+* **User and Review (as Reviewer):**
+    * **One-to-Many:** One `User` can write many `Review` records. The `Review` table has a foreign key `user_id` that references the `user_id` in the `User` table, indicating who wrote the review.
+
+* **Property and Review:**
+    * **One-to-Many:** One `Property` can receive many `Review` records. The `Review` table has a foreign key `property_id` that references the `property_id` in the `Property` table, indicating which property is being reviewed.
+
+* **User and Message (as Sender):**
+    * **One-to-Many:** One `User` can send many `Message` records. The `Message` table has a foreign key `sender_id` that references the `user_id` in the `User` table.
+
+* **User and Message (as Recipient):**
+    * **One-to-Many:** One `User` can receive many `Message` records. The `Message` table has a foreign key `recipient_id` that references the `user_id` in the `User` table.
+
+**In Summary:**
+
+* A **User** can host multiple **Properties**.
+* A **User** can make multiple **Bookings**.
+* A **Property** can have multiple **Bookings**.
+* A **Booking** typically has one **Payment**.
+* A **User** can write multiple **Reviews** for different **Properties**.
+* A **Property** can receive multiple **Reviews** from different **Users**.
+* A **User** can send multiple **Messages** to other **Users**.
+* A **User** can receive multiple **Messages** from other **Users**.
+
+These relationships define how the data in your database is connected and how you can retrieve and manage information across different entities.
+
 ProDev Backend
 Average: 10.08%
 Database Specification - AirBnB
