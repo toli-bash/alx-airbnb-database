@@ -12,6 +12,8 @@ FROM
     Booking AS b
 INNER JOIN
     User AS u ON b.user_id = u.user_id;
+ORDER BY
+    b.start_date;
 
 -- Explanation:
 -- This query joins the Booking and User tables using the user_id column, which is the foreign key in the Booking table and the primary key in the User table.
